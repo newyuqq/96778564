@@ -1,0 +1,17 @@
+[Unit]
+Description=Telegram Business AI Autoresponder Bot
+After=network-online.target ollama.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Change these two paths to match where you cloned the repo and which user runs it
+User=YOUR_LINUX_USERNAME
+WorkingDirectory=/home/YOUR_LINUX_USERNAME/tg-business-ai-bot
+EnvironmentFile=/home/YOUR_LINUX_USERNAME/tg-business-ai-bot/.env
+ExecStart=/home/YOUR_LINUX_USERNAME/tg-business-ai-bot/venv/bin/python main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
