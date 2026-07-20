@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: tg-business-ai-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: AI_BASE_URL
+        sync: false
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_MODEL
+        value: huihui_ai/qwen3-abliterated:4b-v2
+      - key: AI_SYSTEM_PROMPT
+        value: "You are a helpful, friendly assistant answering Telegram Business messages on behalf of the account owner. Keep replies concise and natural."
+      - key: DEFAULT_LANG
+        value: ru
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
